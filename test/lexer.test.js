@@ -1,31 +1,7 @@
 import { expect, test } from 'vitest';
-import { readFile } from 'node:fs/promises';
 import { tokenType } from '../src/lexer/token.js';
 import { Lexer } from '../src/lexer/lexer.js';
-
-/**
- * openFile opens a JSON file and prepeares it for testing
- * @param {string} pathJson - path to the JSON file
- * @returns {Promise<string>} - string representation of the JSON file
- */
-async function openFile(pathJson) {
-    try {
-        const data = await readFile(pathJson);
-        return data.toString('utf-8');
-    } catch (error) {
-        throw new Error(`Unable to open file: ${error}`);
-    }
-}
-
-/**
- * debug outputs expected values and recived values for debugging
- * @param {string} expected
- * @param {string} got
- */
-function debug(expected, got) {
-    console.log('debug');
-    console.log(`expected = ${expected}, got = ${got}`);
-}
+import { openFile, debug } from './util.js';
 
 test('test lexer with step1/valid.json', async () => {
     const input = await openFile('./test/data/step1/valid.json');

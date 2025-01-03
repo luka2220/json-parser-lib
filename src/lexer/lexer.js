@@ -177,7 +177,7 @@ export class Lexer {
      *  @returns {boolean}
      * */
     #isNumber(str) {
-        if (typeof str !== "string") return false;
+        if (typeof str !== 'string') return false;
 
         return (
             (str.charCodeAt() >= 48 && str.charCodeAt() <= 57) ||
